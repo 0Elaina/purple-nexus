@@ -1,0 +1,62 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+/secrets/
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Logs and runtime files
+*.log
+*.pid
+logs/
+
+# Local agent and editor state
+/.agents/
+/.codex/
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# React, Node.js and pnpm
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Java and Maven
+target/
+.classpath
+.project
+.settings/
+
+# Python and uv
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Generic caches and temporary output
+.cache/
+tmp/
+temp/
+out/

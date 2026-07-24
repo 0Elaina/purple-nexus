@@ -1,0 +1,34 @@
+# Normalize repository text files to LF by default
+* text=auto eol=lf
+
+# Windows-native command scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+
+# Binary fonts
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+
+# Binary archives and packaged dependencies
+*.jar binary
+*.zip binary
+*.gz binary
+*.7z binary
+
+# Binary documents and media
+*.pdf binary
+*.mp3 binary
+*.wav binary
+*.mp4 binary
+*.webm binary
