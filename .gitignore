@@ -23,6 +23,7 @@ logs/
 *.iml
 *.swp
 *.swo
+.mybatis/
 
 # Operating system files
 .DS_Store

@@ -1,0 +1,13 @@
+package com.purple;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PurpleNexusServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PurpleNexusServerApplication.class, args);
+	}
+
+}
