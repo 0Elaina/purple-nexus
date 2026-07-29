@@ -52,12 +52,15 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
         socket_timeout=DEPENDENCY_TIMEOUT_SECONDS,
     )
 
-    # AsyncQdrantClient 当前只完成客户端配置，不会查询 Collection
-    # SecretStr 必须显式取出原文，降低密钥被意外记录的风险
+    # Qdrant 客户端默认会在后台请求服务端版本。
+    # 当前启动阶段只负责创建客户端，真实连通性统一由 readiness 检查，
+    # 因此关闭构造阶段的兼容性探测，避免启动和测试产生隐式网络请求。
+    # SecretStr 必须显式取出原文，降低密钥被意外记录的风险。
     qdrant_client = AsyncQdrantClient(
         url=str(settings.qdrant_url),
         api_key=settings.qdrant_api_key.get_secret_value(),
         timeout=DEPENDENCY_TIMEOUT_SECONDS,
+        check_compatibility=False,
     )
 
     app.state.settings = settings
