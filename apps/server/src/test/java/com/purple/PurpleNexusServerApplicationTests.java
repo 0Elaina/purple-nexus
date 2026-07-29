@@ -1,13 +1,23 @@
 package com.purple;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import software.amazon.awssdk.services.s3.S3Client;
+
+@ActiveProfiles("test")
+@SpringBootTest(properties = "SPRING_PROFILES_ACTIVE=test")
 class PurpleNexusServerApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	@Autowired
+	private S3Client s3Client;
 
+	@Test
+	void createsS3ClientFromApplicationConfiguration() {
+		assertThat(s3Client).isNotNull();
+	}
 }

@@ -1,0 +1,26 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+
+agent:
+  base-url: "http://localhost:8000"
+  service-token: "test-agent-service-token"
+
+s3:
+  endpoint: "http://localhost:9000"
+  access-key: "test-access-key"
+  secret-key: "test-secret-key"
+  bucket: "test-bucket"
+  region: "us-east-1"
+  path-style-access: true
+
+management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: "readinessState"
