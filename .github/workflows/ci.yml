@@ -103,7 +103,7 @@ jobs:
 
             # 准备 uv 和项目基线要求的 Python 3.13。
             - name: Set up uv and Python
-              uses: astral-sh/setup-uv@v8
+              uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
               with:
                   python-version: "3.13"
                   working-directory: apps/agent
