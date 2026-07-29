@@ -44,11 +44,11 @@ purple-nexus/
 
 ## 4. 本地启动
 
-首次启动前，根据各应用的 `.env.example` 创建本地 `.env`。以下命令均从仓库根目录开始，并分别在独立 PowerShell 终端执行。
+首次启动前，根据根级和各应用的 `.env.example` 创建本地 `.env`。基础设施配置和 Compose 命令位于 Ubuntu VM 的仓库检出中；Web、Server 和 Agent 配置及启动命令位于 Windows 仓库检出中，并分别在独立 PowerShell 终端执行。两端仓库应指向同一提交。
 
 ### 4.1 基础设施
 
-```powershell
+```bash
 docker compose up -d
 ```
 
@@ -75,9 +75,9 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-关闭本地基础设施：
+在 Ubuntu VM 的仓库根目录关闭本地基础设施：
 
-```powershell
+```bash
 docker compose down
 ```
 
