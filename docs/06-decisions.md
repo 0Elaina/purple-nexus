@@ -99,6 +99,33 @@
 - 决策：桌面端优先保证视觉完成度与沉浸交互；移动端保证公开核心功能可用，加载性能在视觉方案确定后优化。
 - 影响：可以使用更丰富的素材与动效，但移动端体验会简化；动画流畅度和交互响应仍需保证。
 
+## ADR-012：采用 D1-01.2 项目标识与本地基础设施基线
+
+- 状态：已采纳
+- 背景：Git 基线、三端脚手架、本地基础设施和 CI 在实施前需要共享唯一且无冲突的项目标识、平台、存储方案和端口约定。
+- 决策：
+  - 项目名称使用 `Purple Nexus`，仓库名称使用 `purple-nexus`；三端应用标识分别为 `purple-nexus-web`、`purple-nexus-server` 和 `purple-nexus-agent`。
+  - 远程仓库采用 GitHub 公开仓库 `0Elaina/purple-nexus`；初始化时保持空仓库，不预置 README、`.gitignore`、许可证或其他初始提交。
+  - Java 根包名使用 `com.purple`。该名称仅作为 Purple Nexus 应用内部命名空间，不表示拥有 `purple.com`；未来若发布公共 Java SDK，必须重新评估全局唯一的包名。
+  - CI 平台使用 GitHub Actions，远程构建不得依赖开发机私有路径、VM 地址或本地凭据。
+  - 本地对象存储使用 RustFS，通过 S3 API 接入并运行在 Ubuntu VMware 虚拟机的 Docker 环境中；它只承担本地开发基础设施职责，业务代码不得依赖 RustFS 专有接口。
+  - 开发期应用运行在 Windows，基础设施运行在 Ubuntu Docker。端口采用以下统一矩阵：
+
+    | 服务 | 运行位置 | 端口 | 用途 |
+    | --- | --- | ---: | --- |
+    | React/Vite Web | Windows | `5173` | 前端开发服务器 |
+    | Spring Boot Server | Windows | `8080` | 核心业务 API |
+    | FastAPI Agent | Windows | `8000` | AI Agent 内部 API |
+    | PostgreSQL | Ubuntu Docker | `5432` | 业务数据库 |
+    | Redis | Ubuntu Docker | `6379` | 缓存与状态管理 |
+    | Qdrant HTTP/UI | Ubuntu Docker | `6333` | 向量检索与管理界面 |
+    | Qdrant gRPC | Ubuntu Docker | `6334` | 向量数据库 gRPC 接口 |
+    | RustFS S3 API | Ubuntu Docker | `9000` | 对象存储 S3 接口 |
+    | RustFS Console | Ubuntu Docker | `9001` | 对象存储管理界面 |
+
+  - Qdrant 单节点开发环境不发布集群通信端口 `6335`。浏览器只直接访问 Web 与 Spring Boot；VM 地址通过本地环境变量提供，个人地址、绝对路径和凭据不得提交到仓库。
+- 影响：D1-02 至 D1-06 可以直接复用同一套仓库、包名、CI、S3 契约和端口输入；采用生态默认端口降低配置成本。`com.purple` 的全局唯一性不受域名所有权保障，因此其适用范围被限制为当前应用。
+
 ## 3. 记录边界
 
 功能范围、系统现状、开发命令、视觉规范和 Agent 节点分别由 `01-product-scope.md` 至 `05-agent-design.md` 维护；API、数据字段和依赖版本由代码及生成文件维护。
