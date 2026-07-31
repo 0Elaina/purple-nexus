@@ -1,0 +1,35 @@
+@theme {
+  --font-display: "Oxanium Variable", "Segoe UI", sans-serif;
+  --font-body:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-canvas: #f8f7ff;
+  --color-surface: #ffffff;
+  --color-surface-glass: rgb(255 255 255 / 72%);
+  --color-primary: #7352c7;
+  --color-primary-strong: #4d2b91;
+  --color-secondary: #2b93a8;
+  --color-text-primary: #242035;
+  --color-text-secondary: #5f5a70;
+  --color-border: #d9d0ee;
+  --color-focus: #087f9c;
+  --color-on-primary: #ffffff;
+  --radius-small: 0.5rem;
+  --radius-large: 1.5rem;
+  --shadow-glass: 0 20px 60px rgb(74 47 132 / 14%);
+  --blur-glass: 18px;
+}
+
+:root {
+  --gradient-canvas:
+    radial-gradient(
+      circle at 15% 10%,
+      rgb(204 247 255 / 55%),
+      transparent 32rem
+    ),
+    radial-gradient(
+      circle at 85% 0%,
+      rgb(228 211 255 / 65%),
+      transparent 34rem
+    ),
+    linear-gradient(180deg, #fcfbff 0%, var(--color-canvas) 100%);
+}

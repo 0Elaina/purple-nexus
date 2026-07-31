@@ -1,15 +1,12 @@
-import './App.css'
+import { HomePage } from './pages/home/HomePage'
 
+/**
+ * Web 应用的根组件。
+ *
+ * 页面结构和视觉职责由页面组件维护，避免 App 演变为具体页面容器。
+ */
 function App() {
-  return (
-    <main className="app-shell">
-      <section className="app-status" aria-labelledby="app-title">
-        <p>Monorepo web scaffold</p>
-        <h1 id="app-title">Purple Nexus</h1>
-        <p>React application is ready.</p>
-      </section>
-    </main>
-  )
+  return <HomePage />
 }
 
 export default App
