@@ -1,0 +1,456 @@
+.home-page-shell {
+  min-width: 320px;
+  overflow: clip;
+  background: #07101f;
+  color: #eef4ff;
+}
+
+.home-header__rail {
+  min-height: 3.25rem;
+  border: 1px solid rgb(213 239 255 / 18%);
+  border-radius: 1.25rem;
+  padding: 0.35rem 0.45rem 0.35rem 0.75rem;
+  color: rgb(239 247 255 / 92%);
+  background: linear-gradient(
+    115deg,
+    rgb(8 20 39 / 72%),
+    rgb(32 24 67 / 42%)
+  );
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+  backdrop-filter: blur(1rem);
+}
+
+.home-header__brand {
+  color: inherit;
+}
+
+.home-header__brand:hover {
+  color: #ffffff;
+}
+
+.home-header__status {
+  align-items: center;
+  min-height: 2.25rem;
+  border: 1px solid rgb(103 232 249 / 18%);
+  border-radius: 0.85rem;
+  padding: 0 0.8rem;
+  color: rgb(165 243 252 / 78%);
+  background: rgb(103 232 249 / 7%);
+}
+
+.home-hero {
+  isolation: isolate;
+  min-height: max(100svh, 36rem);
+  background: #050817;
+}
+
+/*
+ * 轻微统一外部视频的明暗和饱和度。
+ * 调色只服务文字可读性，不改变素材本身的内容含义。
+ */
+.home-hero__media {
+  filter: brightness(0.84) contrast(1.04) saturate(1.02);
+  transform: scale(1.015);
+}
+
+.home-hero__veil {
+  background:
+    radial-gradient(
+      circle at 72% 28%,
+      rgb(103 232 249 / 16%),
+      transparent 34rem
+    ),
+    linear-gradient(
+      90deg,
+      rgb(3 8 20 / 78%) 0%,
+      rgb(3 8 20 / 42%) 38%,
+      rgb(3 8 20 / 8%) 72%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(3 8 20 / 18%) 0%,
+      transparent 48%,
+      #07101f 100%
+    );
+}
+
+.home-hero__content {
+  min-width: 0;
+  text-shadow: 0 0.75rem 2.5rem rgb(0 0 0 / 48%);
+}
+
+.home-hero__eyebrow,
+.home-hero__scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.home-hero__eyebrow::before {
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  content: "";
+}
+
+.home-hero__scroll-cue::after {
+  width: 3.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, currentColor, transparent);
+  content: "";
+}
+
+.home-nexus {
+  background:
+    radial-gradient(
+      circle at 18% 0%,
+      rgb(165 243 252 / 14%),
+      transparent 26rem
+    ),
+    radial-gradient(
+      circle at 78% 58%,
+      rgb(96 165 250 / 18%),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      #07101f 0%,
+      #0a1a29 24%,
+      #071522 56%,
+      #06111d 100%
+    );
+}
+
+/*
+ * 网格只承担空间纵深，不传达可点击含义。
+ * 较低透明度避免它与标题和 Nexus 核心争夺视觉焦点。
+ */
+.home-nexus::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 8%) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: linear-gradient(to bottom, transparent, black 32%, black);
+  opacity: 0.32;
+  content: "";
+}
+
+/* 以低透明度的上下渐变连接 Hero 与 Gateway，避免 Nexus 成为孤立色块。 */
+.home-nexus::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #07101f 0%,
+    rgb(7 16 31 / 78%) 7rem,
+    transparent 22rem,
+    transparent 76%,
+    rgb(3 12 22 / 24%) 100%
+  );
+  pointer-events: none;
+  content: "";
+}
+
+.home-nexus__bridge {
+  width: min(100%, 32rem);
+  min-height: 18rem;
+  overflow: hidden;
+  border: 1px solid rgb(213 239 255 / 24%);
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgb(12 29 53 / 74%),
+    rgb(22 52 74 / 42%)
+  );
+  box-shadow:
+    0 2rem 5rem rgb(0 0 0 / 22%),
+    inset 0 1px 0 rgb(255 255 255 / 10%);
+  backdrop-filter: blur(1rem);
+}
+
+.home-nexus__bridge::before,
+.home-nexus__bridge::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.home-nexus__bridge::before {
+  border: 1px solid rgb(103 232 249 / 16%);
+  border-radius: inherit;
+  transform: translate(0.6rem, 0.6rem);
+}
+
+.home-nexus__bridge::after {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(103 232 249 / 12%),
+    transparent 44%
+  );
+}
+
+.home-nexus__bridge-grid {
+  position: absolute;
+  inset: 1.25rem;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgb(213 239 255 / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(213 239 255 / 8%) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+  opacity: 0.38;
+}
+
+.home-nexus__bridge-line {
+  position: absolute;
+  right: 2rem;
+  left: 2rem;
+  z-index: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(165 243 252 / 62%) 18%,
+    rgb(196 181 253 / 82%) 50%,
+    rgb(165 243 252 / 62%) 82%,
+    transparent
+  );
+  box-shadow: 0 0 1rem rgb(103 232 249 / 32%);
+}
+
+.home-nexus__bridge-line--top {
+  top: 34%;
+}
+
+.home-nexus__bridge-line--bottom {
+  bottom: 34%;
+}
+
+.home-nexus__bridge-beacon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  width: 5rem;
+  height: 5rem;
+  place-items: center;
+  border: 1px solid rgb(165 243 252 / 72%);
+  border-radius: 9999px;
+  background: rgb(103 232 249 / 8%);
+  box-shadow:
+    0 0 1rem rgb(103 232 249 / 48%),
+    inset 0 0 1.5rem rgb(196 181 253 / 24%);
+  transform: translate(-50%, -50%);
+}
+
+.home-nexus__bridge-beacon-core {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  background: #dffcff;
+  box-shadow:
+    0 0 1rem rgb(223 252 255 / 90%),
+    0 0 3rem rgb(103 232 249 / 72%);
+}
+
+.home-nexus__bridge-readout {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(213 239 255 / 62%);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+}
+
+.home-gateway {
+  background:
+    radial-gradient(
+      circle at 82% 12%,
+      rgb(103 232 249 / 10%),
+      transparent 30rem
+    ),
+    linear-gradient(
+      180deg,
+      #06111d 0%,
+      #071522 48%,
+      #081a29 100%
+    );
+}
+
+/* 让信号桥向入口网格回落时保留轻微的空间纹理。 */
+.home-gateway::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(165 243 252 / 6%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(165 243 252 / 6%) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+  content: "";
+}
+
+.home-gateway__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(10rem, auto);
+  gap: 1rem;
+}
+
+.home-gateway__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(213 239 255 / 18%);
+  background: linear-gradient(
+    135deg,
+    rgb(10 28 48 / 78%),
+    rgb(19 45 66 / 54%)
+  );
+  box-shadow:
+    0 1.5rem 3rem rgb(0 0 0 / 18%),
+    inset 0 1px 0 rgb(255 255 255 / 8%);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.home-gateway__card--featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 21rem;
+}
+
+.home-gateway__card-label {
+  color: rgb(165 243 252 / 78%);
+}
+
+.home-gateway__card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.15rem;
+  background: linear-gradient(90deg, #67e8f9, #93c5fd, #c4b5fd);
+  content: "";
+}
+
+.home-gateway__card:hover {
+  border-color: rgb(165 243 252 / 46%);
+  box-shadow:
+    0 1.5rem 3rem rgb(0 0 0 / 22%),
+    0 0 2rem rgb(103 232 249 / 10%);
+  transform: translateY(-0.25rem);
+}
+
+.home-gateway__card:focus-visible {
+  outline: 0.2rem solid #67e8f9;
+  outline-offset: 0.25rem;
+}
+
+.home-gateway__status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  border-radius: 9999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.home-gateway__status--building {
+  border: 1px solid rgb(165 243 252 / 24%);
+  color: #a5f3fc;
+  background: rgb(103 232 249 / 9%);
+}
+
+.home-gateway__status--available {
+  border: 1px solid rgb(134 239 172 / 24%);
+  color: #bbf7d0;
+  background: rgb(134 239 172 / 9%);
+}
+
+.home-footer {
+  background: #06111d;
+  color: rgb(213 239 255 / 62%);
+}
+
+.home-footer__inner {
+  border-color: rgb(213 239 255 / 14%);
+}
+
+/*
+ * 窄屏优先保证文字和场景离场空间。
+ * 视频与 Nexus 外圈都属于装饰层，不能挤压或遮挡可读内容。
+ */
+@media (max-width: 767px) {
+  .home-hero {
+    padding-block: 7rem 5rem;
+  }
+
+  .home-hero__media {
+    opacity: 0.84;
+  }
+
+  .home-hero__content,
+  .home-nexus__content,
+  .home-gateway__content {
+    min-width: 0;
+  }
+
+  .home-nexus__bridge {
+    min-height: 15rem;
+  }
+
+  .home-nexus__bridge-readout {
+    right: 1.1rem;
+    left: 1.1rem;
+  }
+
+  .home-gateway__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-gateway__card--featured {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home-gateway__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-gateway__card--featured {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+/*
+ * Reduced Motion 下保留内容和状态，只移除非必要的连续位移与悬停抬升。
+ * GSAP 的媒体条件由 useHomeMotion 管理，这里负责 CSS 最终静态状态。
+ */
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__media {
+    transform: none;
+  }
+
+  .home-gateway__card {
+    transition: none;
+  }
+
+  .home-gateway__card:hover {
+    transform: none;
+  }
+}
