@@ -127,7 +127,7 @@ Agent 启动后，在 Windows 仓库根目录打开另一个 PowerShell 终端�
 
 ```powershell
 Set-Location apps/server
-.\mvnw.cmd spring-boot:run
+.\mvnw.cmd -pl server-app -am spring-boot:run
 ```
 
 ### 4. 启动 Web

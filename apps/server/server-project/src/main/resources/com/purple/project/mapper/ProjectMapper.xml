@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.purple.project.mapper.ProjectMapper">
+    <!--
+      列表只取卡片需要的数据。
+      发布过滤固定在查询内，调用方不能误将草稿公开。
+    -->
+    <select id="findAllPublished" resultType="com.purple.project.read.ProjectListItem">
+        SELECT
+            slug,
+            title,
+            summary,
+            cover_url    AS "coverUrl",
+            published_at AS "publishedAt"
+        FROM
+            projects
+        WHERE
+            status = 'PUBLISHED'
+        ORDER BY
+            published_at DESC,
+            id DESC
+    </select>
+    <!--
+      不存在和未发布作品都不返回记录，
+      避免通过 slug 推断草稿是否存在。
+    -->
+    <select id="findPublishedBySlug" resultType="com.purple.project.read.ProjectDetail">
+        SELECT
+            slug,
+            title,
+            summary,
+            description,
+            cover_url    AS "coverUrl",
+            published_at AS "publishedAt"
+        FROM
+            projects
+        WHERE
+            slug = #{slug}
+            AND status = 'PUBLISHED'
+    </select>
+</mapper>

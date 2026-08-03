@@ -64,7 +64,7 @@ uv run uvicorn purple_nexus_agent.main:app --reload
 
 ```powershell
 Set-Location apps/server
-.\mvnw.cmd spring-boot:run
+.\mvnw.cmd -pl server-app -am spring-boot:run
 ```
 
 ### 4.4 Web 应用
